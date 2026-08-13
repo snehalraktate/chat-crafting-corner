@@ -36,11 +36,11 @@ export function ChatWindow({ thread }: { thread: Thread }) {
     onError: (error) => toast.error(error.message || "Something went wrong"),
   });
 
-  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
   const isBusy = status === "submitted" || status === "streaming";
 
   useEffect(() => {
-    inputRef.current?.focus();
+    formRef.current?.querySelector("textarea")?.focus();
   }, [thread.id, status]);
 
   useEffect(() => {
@@ -109,18 +109,12 @@ export function ChatWindow({ thread }: { thread: Thread }) {
         <ConversationScrollButton />
       </Conversation>
 
-      <div className="border-t border-border bg-background/80 px-4 py-4 backdrop-blur">
+      <div ref={formRef} className="border-t border-border bg-background/80 px-4 py-4 backdrop-blur">
         <PromptInput
           className="mx-auto w-full max-w-3xl"
-          onSubmit={(_message, event) => {
-            event.preventDefault();
-            const el = inputRef.current;
-            if (!el) return;
-            send(el.value);
-            el.value = "";
-          }}
+          onSubmit={(message) => send(message.text ?? "")}
         >
-          <PromptInputTextarea ref={inputRef} placeholder="Message the assistant..." />
+          <PromptInputTextarea placeholder="Message the assistant..." />
           <PromptInputFooter className="justify-end">
             <PromptInputSubmit status={status} disabled={isBusy} />
           </PromptInputFooter>
