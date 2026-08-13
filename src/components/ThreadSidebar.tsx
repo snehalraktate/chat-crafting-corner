@@ -26,7 +26,7 @@ export function ThreadSidebar({ activeId }: { activeId: string }) {
       <div className="flex items-center gap-2 px-4 py-4">
         <img src={botMark} alt="" className="h-7 w-7" />
         <span className="text-sm font-semibold tracking-tight text-sidebar-foreground">
-          Chatbot
+          Chatboat
         </span>
       </div>
 

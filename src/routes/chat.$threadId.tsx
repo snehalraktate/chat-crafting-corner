@@ -8,10 +8,10 @@ import { getThread, type Thread } from "@/lib/threads";
 export const Route = createFileRoute("/chat/$threadId")({
   head: () => ({
     meta: [
-      { title: "Chat — AI Assistant" },
-      { name: "description", content: "Chat with an AI assistant. Conversations stay saved in your browser." },
-      { property: "og:title", content: "Chat — AI Assistant" },
-      { property: "og:description", content: "Chat with an AI assistant, with saved conversation threads." },
+      { title: "Chat — Chatboat" },
+      { name: "description", content: "Chat with Chatboat. Conversations stay saved in your browser." },
+      { property: "og:title", content: "Chat — Chatboat" },
+      { property: "og:description", content: "Chat with Chatboat, with saved conversation threads." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
