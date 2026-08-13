@@ -6,10 +6,10 @@ import { loadThreads, newId } from "@/lib/threads";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AI Chatbot — Fast, friendly assistant" },
-      { name: "description", content: "A ChatGPT-style AI chatbot with saved conversation threads in your browser." },
-      { property: "og:title", content: "AI Chatbot — Fast, friendly assistant" },
-      { property: "og:description", content: "A ChatGPT-style AI chatbot with saved conversation threads." },
+      { title: "Chatboat — Fast, friendly assistant" },
+      { name: "description", content: "Chatboat: a fast, friendly AI assistant with saved conversation threads in your browser." },
+      { property: "og:title", content: "Chatboat — Fast, friendly assistant" },
+      { property: "og:description", content: "Chatboat: a fast, friendly AI assistant with saved conversation threads." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

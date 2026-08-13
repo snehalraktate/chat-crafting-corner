@@ -78,14 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AI Chatbot" },
-      { name: "description", content: "A ChatGPT-style AI chatbot with saved conversation threads." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "AI Chatbot" },
-      { property: "og:description", content: "A ChatGPT-style AI chatbot with saved conversation threads." },
+      { title: "Chatboat" },
+      { name: "description", content: "A fast, friendly AI assistant with saved conversation threads." },
+      { name: "author", content: "Chatboat" },
+      { property: "og:title", content: "Chatboat" },
+      { property: "og:description", content: "A fast, friendly AI assistant with saved conversation threads." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@Chatboat" },
     ],
     links: [
       {
