@@ -1,24 +1,34 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { loadThreads, newId } from "@/lib/threads";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "AI Chatbot — Fast, friendly assistant" },
+      { name: "description", content: "A ChatGPT-style AI chatbot with saved conversation threads in your browser." },
+      { property: "og:title", content: "AI Chatbot — Fast, friendly assistant" },
+      { property: "og:description", content: "A ChatGPT-style AI chatbot with saved conversation threads." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const threads = loadThreads();
+    const id = threads[0]?.id ?? newId();
+    void navigate({ to: "/chat/$threadId", params: { threadId: id }, replace: true });
+  }, [navigate]);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <p className="text-sm text-muted-foreground">Opening your chat…</p>
     </div>
   );
 }
