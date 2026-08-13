@@ -31,7 +31,14 @@ export const Route = createFileRoute("/api/chat")({
 
         return result.toUIMessageStreamResponse({
           originalMessages: messages as UIMessage[],
+          onError: (error) => {
+            const message = error instanceof Error ? error.message : String(error);
+            if (message.includes("429")) return "Rate limit reached. Please wait a moment and try again.";
+            if (message.includes("402")) return "AI credits exhausted. Add credits to continue.";
+            return `AI request failed: ${message}`;
+          },
         });
+
       },
     },
   },
